@@ -39,4 +39,12 @@ public class ProductService {
         return "ID Deleted";
     }
 
+    public Product updateProduct(Product product){
+        Product existingProduct = productRepository.findById(product.getId()).orElse(null)
+        existingProduct.setName(product.getName());
+        existingProduct.setQuantity(product.getQuantity());
+        existingProduct.setPrice(product.getPrice());
+        return productRepository.save(existingProduct);
+    }
+
 }
